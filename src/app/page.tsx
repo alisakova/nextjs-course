@@ -1,25 +1,21 @@
-import { rackets } from '../../materials/mocks'
-import { RacketCard } from './_components/RacketCard'
-import styles from './homePage.module.css'
-import Link from 'next/link'
+import { SectionHeader } from './components/SectionHeader'
+import { AllRacketsSection } from './components/AllRacketsSection'
+import { Top10Section } from './components/Top10Section'
 
-const racketsDisplayed = rackets.slice(0, 5)
+import styles from './homePage.module.css'
 
 const HomePage = () => {
   return (
-    <>
-      <div className={styles.header}>
-        <h1 className={styles.title}>Ракетки</h1>
-        <Link href="/rackets" className={styles.link}>
-          Все &#8599;
-        </Link>
-      </div>
-      <div className={styles.rackets}>
-        {racketsDisplayed.map(({ imageUrl, id, name }) => (
-          <RacketCard key={id} imgSrc={imageUrl} racketId={id} title={name} />
-        ))}
-      </div>
-    </>
+    <div className={styles.container}>
+      <section>
+        <SectionHeader allLink="/rackets" title="Ракетки" />
+        <AllRacketsSection withSlider />
+      </section>
+      <section>
+        <SectionHeader allLink="/top-10" title="Топ 10" />
+        <Top10Section withSlider />
+      </section>
+    </div>
   )
 }
 
