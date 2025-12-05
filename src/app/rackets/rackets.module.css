@@ -1,0 +1,14 @@
+.rackets {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem 1rem;
+}
+
+.title {
+  font-weight: 500;
+  font-size: 1.25rem;
+}
+
+.header {
+  padding: 1rem 0 2rem;
+}

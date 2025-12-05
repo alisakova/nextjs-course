@@ -1,0 +1,12 @@
+.link {
+  color: #3e3f40;
+
+  &.isActive {
+    cursor: unset;
+    color: #9d6a0f;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}

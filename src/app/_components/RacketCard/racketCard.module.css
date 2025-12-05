@@ -1,0 +1,8 @@
+.racketCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  color: #3e3f40;
+  text-decoration: none;
+  font-weight: 500;
+}

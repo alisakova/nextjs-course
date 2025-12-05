@@ -1,0 +1,26 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  align-items: center;
+  height: 100%;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.brandName {
+  color: #585a5c;
+}
+
+.price {
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+.image.image {
+  height: 100%;
+}
