@@ -1,33 +1,26 @@
-import { rackets } from '../../../../materials/mocks'
 import styles from './racketPage.module.css'
-import { RacketImage } from '../../_components/RacketImage'
-import { Metadata } from 'next'
-
-export const generateStaticParams = () => {
-  return [{ id: '1' }, { id: '2' }, { id: '3' }]
-}
-
-export async function generateMetadata({ params }: PageProps<'/racket/[id]'>): Promise<Metadata> {
-  const { id } = await params
-
-  const racket = rackets.find((racket) => String(racket.id) === id)
-
-  return {
-    title: racket?.name ?? 'Ракетка не найдена',
-    description: racket?.description ?? '',
-  }
-}
+import { RacketImage } from '../../components/RacketImage'
+import { getProductById } from '../../../services/get-product-by-id'
+import { notFound } from 'next/navigation'
 
 const RacketPage = async ({ params }: PageProps<'/racket/[id]'>) => {
   const { id } = await params
 
-  const racket = rackets.find((racket) => String(racket.id) === id)
-
-  if (!racket) {
-    return <div>Такой ракетки не существует</div>
+  if (typeof id !== 'string') {
+    return null
   }
 
-  const { brand, name, description, price, imageUrl } = racket
+  const { isError, data } = await getProductById({ id })
+
+  if (!isError && !data) {
+    return notFound()
+  }
+
+  if (isError || !data) {
+    return <div>Ошибка загрузки данных</div>
+  }
+
+  const { brand, name, description, price, imageUrl } = data
 
   return (
     <div className={styles.wrapper}>
