@@ -1,0 +1,15 @@
+.withGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem 1rem;
+}
+
+.withSlider {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+}
+
+.cardInGrid {
+  flex: 1 0 25%;
+}
