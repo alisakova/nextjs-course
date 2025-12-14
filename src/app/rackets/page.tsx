@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import { SectionHeader } from '../components/SectionHeader'
 import { AllRacketsSection } from '../components/AllRacketsSection'
+import { Suspense } from 'react'
 
 export const metadata: Metadata = {
   title: 'Ракетки',
@@ -10,7 +11,9 @@ const RacketsPage = () => {
   return (
     <section>
       <SectionHeader title="Ракетки" />
-      <AllRacketsSection limit={20} />
+      <Suspense fallback={<div>Загрузка ракеток...</div>}>
+        <AllRacketsSection limit={20} />
+      </Suspense>
     </section>
   )
 }

@@ -1,4 +1,3 @@
-import { Suspense } from 'react'
 import { RacketsContainer, RacketsContainerProps } from '../RacketsContainer'
 import { getProducts } from '../../../services/get-products'
 
@@ -14,9 +13,5 @@ export const AllRacketsSection = async ({ limit = 10, page = 1, withSlider, with
     return null
   }
 
-  return (
-    <Suspense fallback={<div>Загрузка ракеток...</div>}>
-      <RacketsContainer data={data} withSlider={withSlider} withGrid={withGrid} />
-    </Suspense>
-  )
+  return <RacketsContainer data={data} withSlider={withSlider} withGrid={withGrid} />
 }

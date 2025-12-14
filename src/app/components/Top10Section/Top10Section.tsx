@@ -1,4 +1,3 @@
-import { Suspense } from 'react'
 import { RacketsContainer, RacketsContainerProps } from '../RacketsContainer'
 import { getTop10 } from '../../../services/get-top-10'
 
@@ -11,9 +10,5 @@ export const Top10Section = async ({ withGrid, withSlider }: Top10SectionProps) 
     return null
   }
 
-  return (
-    <Suspense fallback={<div>Загрузка топ 10...</div>}>
-      <RacketsContainer data={data} withSlider={withSlider} withGrid={withGrid} />
-    </Suspense>
-  )
+  return <RacketsContainer data={data} withSlider={withSlider} withGrid={withGrid} />
 }

@@ -3,17 +3,22 @@ import { AllRacketsSection } from './components/AllRacketsSection'
 import { Top10Section } from './components/Top10Section'
 
 import styles from './homePage.module.css'
+import { Suspense } from 'react'
 
 const HomePage = () => {
   return (
     <div className={styles.container}>
       <section>
         <SectionHeader allLink="/rackets" title="Ракетки" />
-        <AllRacketsSection withSlider />
+        <Suspense fallback={<div>Загрузка ракеток...</div>}>
+          <AllRacketsSection withSlider />
+        </Suspense>
       </section>
       <section>
         <SectionHeader allLink="/top-10" title="Топ 10" />
-        <Top10Section withSlider />
+        <Suspense fallback={<div>Загрузка топ 10...</div>}>
+          <Top10Section withSlider />
+        </Suspense>
       </section>
     </div>
   )
