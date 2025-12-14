@@ -1,0 +1,24 @@
+.appName {
+  font-size: 1.25rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #585a5c;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-top: 1px solid #e1e2e3;
+  padding: 1rem;
+  min-height: 7.5rem;
+}
+
+.copyRightText {
+  font-size: 0.75rem;
+  color: #6e7072;
+}
