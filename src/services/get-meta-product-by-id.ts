@@ -6,8 +6,8 @@ type Params = {
   id: string
 }
 
-export const getProductById = async ({ id }: Params): Promise<Response<Racket>> => {
-  const result = await fetch(`${BASE_API_URL}/product/${id}`)
+export const getMetaProductById = async ({ id }: Params): Promise<Response<Racket>> => {
+  const result = await fetch(`${BASE_API_URL}/meta/product/${id}`)
 
   if (result.status === 404) {
     return { isError: false, data: undefined }

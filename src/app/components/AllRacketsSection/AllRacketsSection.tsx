@@ -10,7 +10,7 @@ export const AllRacketsSection = async ({ limit = 10, page = 1, withSlider, with
   const { isError, data } = await getProducts({ limit, page })
 
   if (isError || !data) {
-    return null
+    throw new Error()
   }
 
   return <RacketsContainer data={data} withSlider={withSlider} withGrid={withGrid} />

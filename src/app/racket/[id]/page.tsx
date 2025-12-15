@@ -2,6 +2,25 @@ import styles from './racketPage.module.css'
 import { RacketImage } from '../../components/RacketImage'
 import { getProductById } from '../../../services/get-product-by-id'
 import { notFound } from 'next/navigation'
+import { Metadata } from 'next'
+import { getMetaProductById } from '../../../services/get-meta-product-by-id'
+
+export async function generateMetadata({ params }: PageProps<'/racket/[id]'>): Promise<Metadata> {
+  const { id } = await params
+  const { isError, data } = await getMetaProductById({ id })
+
+  if (isError || !data) {
+    return {
+      title: 'Ракетка',
+      description: 'Описание ракетки',
+    }
+  }
+
+  return {
+    title: data.name,
+    description: data.description,
+  }
+}
 
 const RacketPage = async ({ params }: PageProps<'/racket/[id]'>) => {
   const { id } = await params
@@ -17,7 +36,7 @@ const RacketPage = async ({ params }: PageProps<'/racket/[id]'>) => {
   }
 
   if (isError || !data) {
-    return <div>Ошибка загрузки данных</div>
+    throw new Error()
   }
 
   const { brand, name, description, price, imageUrl } = data
