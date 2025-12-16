@@ -1,5 +1,5 @@
-import { BASE_API_URL } from '../constants/api'
-import { Racket } from '../types/racket'
+import { BASE_API_URL } from '@/constants/api'
+import { Racket } from '@/types/racket'
 import type { Response } from './types'
 
 type Params = {

@@ -1,9 +1,6 @@
 import './global.css'
 
-import styles from './layout.module.css'
 import { Metadata } from 'next'
-import { Header } from './components/Header'
-import { Footer } from './components/Footer/Footer'
 import NextTopLoader from 'nextjs-toploader'
 
 export const metadata: Metadata = {
@@ -11,17 +8,12 @@ export const metadata: Metadata = {
   description: 'Лучший магазин теннисных ракеток',
 }
 
-const RootLayout = ({ children }: LayoutProps<'/'>) => {
+const RootLayout = async ({ children }: LayoutProps<'/'>) => {
   return (
-    <html>
+    <html lang="en">
       <body>
-        <NextTopLoader color="#3392ea" showSpinner={false} />
-
-        <Header />
-
-        <main className={styles.main}>{children}</main>
-
-        <Footer />
+        <NextTopLoader showSpinner={false} />
+        {children}
       </body>
     </html>
   )
