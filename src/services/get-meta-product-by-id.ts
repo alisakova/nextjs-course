@@ -3,12 +3,11 @@ import { Racket } from '../types/racket'
 import type { Response } from './types'
 
 type Params = {
-  limit?: number
-  page?: number
+  id: string
 }
 
-export const getProducts = async ({ limit = 10, page = 1 }: Params): Promise<Response<Racket[]>> => {
-  const result = await fetch(`${BASE_API_URL}/products?limit=${limit}&page=${page}`)
+export const getMetaProductById = async ({ id }: Params): Promise<Response<Racket>> => {
+  const result = await fetch(`${BASE_API_URL}/meta/product/${id}`)
 
   if (result.status === 404) {
     return { isError: false, data: undefined }
@@ -18,7 +17,7 @@ export const getProducts = async ({ limit = 10, page = 1 }: Params): Promise<Res
     return { isError: true, data: undefined }
   }
 
-  const data: Racket[] = await result.json()
+  const data: { product: Racket } = await result.json()
 
-  return { isError: false, data }
+  return { isError: false, data: data.product }
 }

@@ -1,4 +1,4 @@
-import { BASE_API_URL } from './constans'
+import { BASE_API_URL } from '../constants/api'
 import { Racket } from '../types/racket'
 import type { Response } from './types'
 
@@ -9,7 +9,6 @@ type Params = {
 export const getProductById = async ({ id }: Params): Promise<Response<Racket>> => {
   const result = await fetch(`${BASE_API_URL}/product/${id}`)
 
-  console.log(result)
   if (result.status === 404) {
     return { isError: false, data: undefined }
   }

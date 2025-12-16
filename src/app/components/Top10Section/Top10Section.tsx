@@ -7,7 +7,7 @@ export const Top10Section = async ({ withGrid, withSlider }: Top10SectionProps) 
   const { isError, data } = await getTop10()
 
   if (isError || !data) {
-    return null
+    throw new Error()
   }
 
   return <RacketsContainer data={data} withSlider={withSlider} withGrid={withGrid} />

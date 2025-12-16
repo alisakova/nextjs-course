@@ -5,6 +5,7 @@ import { Suspense } from 'react'
 
 export const metadata: Metadata = {
   title: 'Топ 10',
+  description: 'Топ 10 ракеток',
 }
 
 const Top10Page = () => {
