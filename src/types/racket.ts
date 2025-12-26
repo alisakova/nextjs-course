@@ -13,4 +13,7 @@ export interface Racket {
     id: number
     name: string
   }
+  userData?: {
+    isFavorite?: boolean
+  }
 }
