@@ -17,14 +17,15 @@ export const RacketsContainer = async ({ data, withGrid = true, withSlider = fal
         [styles.withSlider]: withSlider,
       })}
     >
-      {data.map(({ imageUrl, id, name }) => (
+      {data.map(({ imageUrl, id, name, userData }) => (
         <RacketCard
+          userData={userData}
           className={classNames({
             [styles.cardInGrid]: withGrid,
           })}
           key={id}
           imgSrc={imageUrl}
-          racketId={id}
+          id={id}
           title={name}
         />
       ))}

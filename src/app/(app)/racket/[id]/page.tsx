@@ -3,7 +3,6 @@ import { notFound } from 'next/navigation'
 import { Metadata } from 'next'
 import { getMetaProductById } from '@/services/get-meta-product-by-id'
 import { RacketInfo } from '@/components/RacketInfo'
-import {cookies} from "next/headers";
 
 export async function generateMetadata({ params }: PageProps<'/racket/[id]'>): Promise<Metadata> {
   const { id } = await params

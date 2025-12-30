@@ -3,8 +3,10 @@
 import { RacketImage } from '../RacketImage'
 import styles from './racketInfo.module.css'
 import { Racket } from '@/types/racket'
-import { UserContext } from '../../providers/userProvider'
+import { UserContext } from '@/providers/user'
 import { use } from 'react'
+import { useHydrateFavorite, useIsFavoriteById } from '@/providers/favorite/hooks'
+import { ToggleFavoriteButton } from '@/components/ToggleFavoriteButton'
 
 interface RacketInfoProps {
   racket: Racket
@@ -12,8 +14,11 @@ interface RacketInfoProps {
 
 export const RacketInfo = ({ racket }: RacketInfoProps) => {
   const { isAuthorized } = use(UserContext)
-  const { name, imageUrl, description, brand, price, userData } = racket
+  const { id, name, imageUrl, description, brand, price, userData } = racket
 
+  useHydrateFavorite({ id, isFavoriteInitial: Boolean(userData?.isFavorite) })
+
+  const isFavorite = useIsFavoriteById({ id, isFavoriteInitial: Boolean(userData?.isFavorite) })
   return (
     <div className={styles.wrapper}>
       <div className={styles.info}>
@@ -27,7 +32,7 @@ export const RacketInfo = ({ racket }: RacketInfoProps) => {
       <div className={styles.info}>
         <p className={styles.price}>€{price}</p>
 
-        {isAuthorized && <button>{userData?.isFavorite ? 'Удалить из избранного' : 'Добавить в избранное'}</button>}
+        {isAuthorized && <ToggleFavoriteButton isFavorite={isFavorite} racketId={id} />}
       </div>
     </div>
   )
