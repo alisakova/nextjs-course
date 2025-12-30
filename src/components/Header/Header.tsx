@@ -4,7 +4,7 @@ import styles from './header.module.css'
 import Link from 'next/link'
 import { NavLink } from '../NavLink'
 import { LogoutButton } from '../LogoutButton'
-import { UserContext } from '../../providers/userProvider'
+import { UserContext } from '@/providers/user'
 import { use } from 'react'
 
 const navLinks = [

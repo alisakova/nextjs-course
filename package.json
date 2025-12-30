@@ -11,12 +11,13 @@
   },
   "dependencies": {
     "classnames": "^2.5.1",
-    "next": "16.0.7",
+    "next": "^16.1.1",
     "nextjs-toploader": "^3.9.17",
     "react": "19.2.1",
     "react-dom": "19.2.1"
   },
   "devDependencies": {
+    "@svgr/webpack": "^8.1.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

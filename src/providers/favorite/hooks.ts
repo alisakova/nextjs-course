@@ -1,4 +1,4 @@
-import {useContext, useEffect} from 'react'
+import { useContext, useEffect } from 'react'
 import { FavoriteContext } from './index'
 import { Racket } from '../../types/racket'
 

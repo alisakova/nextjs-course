@@ -3,20 +3,23 @@ import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer/Footer'
 import NextTopLoader from 'nextjs-toploader'
 import { getUser } from '@/services/get-user'
-import { UserProvider } from '@/providers/userProvider'
+import { UserProvider } from '@/providers/user'
+import { FavoriteProvider } from '../../providers/favorite'
 
 const Layout = async ({ children }: LayoutProps<'/'>) => {
   const { data } = await getUser()
 
   return (
     <UserProvider user={data ?? null}>
-      <NextTopLoader color="#3392ea" showSpinner={false} />
+      <FavoriteProvider>
+        <NextTopLoader color="#3392ea" showSpinner={false} />
 
-      <Header />
+        <Header />
 
-      <main className={styles.main}>{children}</main>
+        <main className={styles.main}>{children}</main>
 
-      <Footer />
+        <Footer />
+      </FavoriteProvider>
     </UserProvider>
   )
 }

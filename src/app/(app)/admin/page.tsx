@@ -1,6 +1,6 @@
 'use client'
 
-import { UserContext } from '@/providers/userProvider'
+import { UserContext } from '@/providers/user'
 import { use } from 'react'
 import { redirect } from 'next/navigation'
 
